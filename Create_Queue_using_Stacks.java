@@ -8,23 +8,25 @@ class MyQueue {
 
     public MyQueue() {
         this.inSt = new Stack<>();
-        this.outSt = new Stack<>();
+        this.outSt = new Stack<>();  //
     }
     
     public void push(int x) {
-        inSt.push(x);
+        inSt.push(x);  // Push a element will directly goes into IN-STACK
     }
     
     public int pop() {
-        if(empty()) return -1;
-        peek();
+        if(empty()) return -1; 
+        peek();   //pop will only pop elements from outstack to follow FIFO order by moving OUT-STACK 
+
+         
         return outSt.pop();
     }
     
     public int peek() {
         if(outSt.isEmpty()){
             while(!inSt.isEmpty()){
-                outSt.push(inSt.pop());
+                outSt.push(inSt.pop()); // ELements in instack is popped & pushed into outstack
             }
         }
         return outSt.peek();
